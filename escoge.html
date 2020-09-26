@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <link rel="stylesheet" href="style.css">
+  <title>Escoge Event Name</title>
+  <style>
+   .jumbotron {
+background-image: url(https://cambr.com/assets/img/jumbotron/hero_bg_blue.png);
+background-size: cover;
+height: 100%;
+position:relative;
+}
+* { text-decoration: none;}
+.grad{
+  background: linear-gradient(to right, #30CFD0 0%, #330867 100%);
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+}
+.mini-grad{
+  background: linear-gradient(to right, #2980b9 0%, #2c3e50 100%);
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+}
+img{
+  border-bottom-left-radius: 30px;
+  border-bottom-right-radius: 30px;
+  border-top-left-radius: 30px;
+  border-top-right-radius: 30px;
+}
+.myButton {
+	box-shadow: 0px 15px 20px -7px #276873;
+	background:linear-gradient(to bottom, #599bb3 5%, #408c99 100%);
+	background-color:#599bb3;
+	border-radius:8px;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-size:18px;
+	padding:8px 15px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #3d768a;
+}
+.myButton:hover {
+	background:linear-gradient(to bottom, #408c99 5%, #599bb3 100%);
+	background-color:#408c99;
+  text-decoration:none;
+}
+.myButton:active {
+	position:relative;
+	top:1px;
+}
+  </style>
+  <script>
+    var TxtType = function(el, toRotate, period) {
+        this.toRotate = toRotate;
+        this.el = el;
+        this.loopNum = 0;
+        this.period = parseInt(period, 10) || 2000;
+        this.txt = '';
+        this.tick();
+        this.isDeleting = false;
+    };
+
+    TxtType.prototype.tick = function() {
+        var i = this.loopNum % this.toRotate.length;
+        var fullTxt = this.toRotate[i];
+
+        if (this.isDeleting) {
+        this.txt = fullTxt.substring(0, this.txt.length - 1);
+        } else {
+        this.txt = fullTxt.substring(0, this.txt.length + 1);
+        }
+
+        this.el.innerHTML = '<span class="wrap">'+this.txt+'</span>';
+
+        var that = this;
+        var delta = 200 - Math.random() * 100;
+
+        if (this.isDeleting) { delta /= 2; }
+
+        if (!this.isDeleting && this.txt === fullTxt) {
+        delta = this.period;
+        this.isDeleting = true;
+        } else if (this.isDeleting && this.txt === '') {
+        this.isDeleting = false;
+        this.loopNum++;
+        delta = 500;
+        }
+
+        setTimeout(function() {
+        that.tick();
+        }, delta);
+    };
+
+    window.onload = function() {
+        var elements = document.getElementsByClassName('typewrite');
+        for (var i=0; i<elements.length; i++) {
+            var toRotate = elements[i].getAttribute('data-type');
+            var period = elements[i].getAttribute('data-period');
+            if (toRotate) {
+              new TxtType(elements[i], JSON.parse(toRotate), period);
+            }
+        }
+        // INJECT CSS
+        var css = document.createElement("style");
+        css.type = "text/css";
+        css.innerHTML = ".typewrite > .wrap { border-right: 0.08em solid #fff}";
+        document.body.appendChild(css);
+    };
+  </script>
+</head>
+<body class="body bg-light">
+
+<!-- Header navbar -->
+
+  <header>
+    <nav class="navbar navbar-light bg-light sticky-top justify-content-between p-2">
+      <a class="navbar-brand" href="#">
+        <img class="ml-4" src="./ieee-comsoc.svg" width="50%" height="auto" alt="">
+      </a>
+      <form class="form-inline grad">
+        <a class="nav-item nav-link text-dark" href="#Home">Home</a>
+        <a class="nav-item nav-link text-dark" href="#Events">Event</a>
+        <a class="nav-item nav-link text-dark" href="#Support">Escoge</a>
+        <a class="nav-item nav-link text-dark" href="#Support">Webcomm</a>
+      </form>
+    </nav>
+
+<!-- Welcome -->
+<section id="Home">
+  <div class="jumbotron jumbotron-fluid text-center bg-light" style="min-height: 500px;;">
+    <div class="container">
+      <h1>
+        <a href="" class="typewrite text-dark" data-period="2000" data-type='[ "Escoge Quiz Series."]'>
+          <span class="wrap"></span>
+        </a>
+      </h1>
+      <p class="lead">Lorem Ipsum é simplesmente uma simulação de texto da indústria tipográfica e de impressos.</p>
+    </div>
+  </div>
+  </header><br>
+  
+</section>
+
+<!-- events -->
+<section id="Events">
+<div class="evnts">
+<div class="container p-5">
+<div class="row featurette mb-5">
+  <div class="col-md-7">
+    <h2 class="featurette-heading grad">Event Name</h2>
+    <p class="lead mini-grad">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+
+      It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).
+      
+      Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.
+      
+      The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham.
+      
+      There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined with a handful of model sentence structures, to generate Lorem Ipsum which looks reasonable. The generated Lorem Ipsum is therefore always free from repetition, injected humour, or non-characteristic words etc.</p>
+  </div>
+  <div class="col-md-5">
+    <img class="featurette-image img-fluid mx-auto" data-src="holder.js/500x500/auto" alt="Image of Escoge" style="width: auto; height: auto;" src="Escoge.png" data-holder-rendered="true">
+  </div>
+</div>
+
+<div class="row featurette mb-5">
+  <div class="col-md-7">
+    <h2 class="featurette-heading grad">#Name_of_Event_Delegate</h2>
+    <p class="lead mini-grad">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+    <a class="myButton text-white my-4" href="form.html" role="button">Register</a>
+  </div>
+  <div class="col-md-5">
+    <img class="featurette-image img-fluid mx-auto" data-src="holder.js/250x250/auto" alt="Image of Escoge" style="width: auto; height: auto;" src="Escoge.png" data-holder-rendered="true">
+  </div>
+</div>
+
+
+</div>
+</div>
+</section>
+
+<section id="Support">
+  <footer id="foot" class="text-center bg-dark text-light">
+  <!--<ul>
+       <div><a class="pt-3" href="#">Privacy&Terms</a>
+            <a href="#">Contact</a><div>
+  </ul>-->
+       <span >&#9400; 2020 IEEE Communications Society Kerala Chapter | All Rights Reserved</span>
+       </footer></section>
+
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</body>
+</html>
